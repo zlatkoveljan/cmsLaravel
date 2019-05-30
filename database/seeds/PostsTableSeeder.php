@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Post;
 Use App\Tag;
 use App\Category;
+use Illuminate\Support\Facades\Hash;
 
 class PostsTableSeeder extends Seeder
 {
@@ -14,6 +15,18 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+        $author1 = App\User::create([
+            'name' =>'John Doe',
+            'email' => 'john@doe.com',
+            'password' => Hash::make('password')
+        ]);
+
+        $author2 = App\User::create([
+            'name' =>'Jane Doe',
+            'email' => 'jane@doe.com',
+            'password' => Hash::make('password')
+        ]);
+
     	$category1 = Category::create([
     		'name' => 'News'
     	]);
@@ -28,7 +41,8 @@ class PostsTableSeeder extends Seeder
         	'description' => 'Lorem Ipsum "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."',
         	'content' => 'Where can I get some? There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as neces',
         	'category_id' => $category1->id,
-        	'image' => 'posts/1.jpg'
+        	'image' => 'posts/1.jpg',
+            'user_id' => $author1->id
         ]);
         $post2 = Post::create([
         	'title' => 'Top 5 brilliant content marketing strategies',
@@ -38,7 +52,8 @@ class PostsTableSeeder extends Seeder
 
 			The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
         	'category_id' => $category2->id,
-        	'image' => 'posts/2.jpg'
+        	'image' => 'posts/2.jpg',
+            'user_id' => $author2->id
         ]);
 
         $post3 = Post::create([
@@ -49,9 +64,11 @@ class PostsTableSeeder extends Seeder
 
 			The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
         	'category_id' => $category3->id,
-        	'image' => 'posts/3.jpg'
+        	'image' => 'posts/3.jpg',
+            'user_id' => $author2->id
         ]);
-         $post4 = Post::create([
+        //drug nacin za da se seed vo baza, dokolku e prethodno utvrdena relacijata vo modelot (hasMany vo slucajov)
+         $post4 = $author1->posts()->create([
         	'title' => 'Congratulate and thank to Maryam for joining our team',
         	'description' => 'Lorem Ipsum "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."',
         	'content' => 'Where can I get some? There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as neces',
