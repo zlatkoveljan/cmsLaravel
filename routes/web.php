@@ -10,10 +10,13 @@ use App\Http\Controllers\Blog\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/blog/categories/{category}', [PostsController::class, 'category'])->name('blog.category'); //pokazuva postoj po kategorija fe
+
+Route::get('/blog/tags/{tag}', [PostsController::class, 'tag'])->name('blog.tag'); //pokazuva postoj po tags fe
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
-Route::get('blog/posts/{post}', [PostsController::class, 'show'])->name('blog.show');
+Route::get('blog/posts/{post}', [PostsController::class, 'show'])->name('blog.show');  //pokazuva eden post frontend
 
 Auth::routes();
 
