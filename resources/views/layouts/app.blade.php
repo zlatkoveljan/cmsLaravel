@@ -117,6 +117,9 @@
                                  <li class="list-group-item">
                                     <a href="{{ route('tags.index') }}">Tags</a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('usershistory.index') }}">History</a>
+                                </li>
                             </ul>
 
                             <ul class="list-group mt-5" >                               

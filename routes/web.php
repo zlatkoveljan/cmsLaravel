@@ -10,6 +10,8 @@ use App\Http\Controllers\Blog\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('users-history', 'UsersHistoryController@index')->name('usershistory.index');
+
 Route::get('/blog/categories/{category}', [PostsController::class, 'category'])->name('blog.category'); //pokazuva postoj po kategorija fe
 
 Route::get('/blog/tags/{tag}', [PostsController::class, 'tag'])->name('blog.tag'); //pokazuva postoj po tags fe
