@@ -13,14 +13,16 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = User::where('email', 'zlatkoveljan@gmail.com')->first();
-
+        //$ip = $_SERVER['REMOTE_ADDR'];
+        //dd($ip);
         if (!$user)
         {
         	User::Create([
         		'name' => 'Zlatko Veljanoski',
         		'email' => 'zlatkoveljan@gmail.com',
         		'role' => 'admin',
-        		'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'ip_address' => '127.0.0.1',
         	]);
         }
     }

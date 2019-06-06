@@ -18,13 +18,15 @@ class PostsTableSeeder extends Seeder
         $author1 = App\User::create([
             'name' =>'John Doe',
             'email' => 'john@doe.com',
-            'password' => Hash::make('password')
+			'password' => Hash::make('password'),
+			'ip_address' => '127.0.0.1'
         ]);
 
         $author2 = App\User::create([
             'name' =>'Jane Doe',
             'email' => 'jane@doe.com',
-            'password' => Hash::make('password')
+			'password' => Hash::make('password'),
+			'ip_address' => '127.0.0.1'
         ]);
 
     	$category1 = Category::create([
