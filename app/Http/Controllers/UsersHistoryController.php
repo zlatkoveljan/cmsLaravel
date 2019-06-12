@@ -38,10 +38,10 @@ class UsersHistoryController extends Controller
      <table width="100%" style="border-collapse: collapse; border: 0px;">
       <tr>
     <th style="border: 1px solid; padding:12px;" width="20%">Name</th>
-    <th style="border: 1px solid; padding:12px;" width="30%">Address</th>
-    <th style="border: 1px solid; padding:12px;" width="15%">City</th>
-    <th style="border: 1px solid; padding:12px;" width="15%">Postal Code</th>
-    <th style="border: 1px solid; padding:12px;" width="20%">Country</th>
+    <th style="border: 1px solid; padding:12px;" width="30%">Email</th>
+    <th style="border: 1px solid; padding:12px;" width="15%">Role</th>
+    <th style="border: 1px solid; padding:12px;" width="15%">Ip Address</th>
+    <th style="border: 1px solid; padding:12px;" width="20%">Number of logins</th>
    </tr>
      ';  
      foreach($users as $user)
