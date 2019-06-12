@@ -5,7 +5,11 @@
 	<div class="card card-default">
 		<div class="card-header">Users</div>
 		<div class="card-body">
-			@if ($users->count() > 0)
+            @if ($users->count() > 0)
+            
+            <div class="col-md-5" align="right">
+                <a href="{{ url('usershistory.pdf') }}" class="btn btn-danger">Convert into PDF</a>
+            </div>
 
 			<table class="table">
 				<thead>
@@ -24,7 +28,7 @@
 							<img width="40px" height="40px" style="border-radius: 50%" src="{{ Gravatar::src($user->email)}}" alt="">
 						</td>
 						<td>
-							{{$user->name}}
+							<?php echo $user->name; ?>
 						</td>
 						<td>
 							{{$user->email}}
@@ -49,7 +53,6 @@
 					@endforeach
 				</tbody>
 			</table>
-			
 			@else
 			<h3 class="text-center">No users yet</h3>
 			@endif

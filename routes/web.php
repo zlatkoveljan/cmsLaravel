@@ -10,7 +10,7 @@ use App\Http\Controllers\Blog\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('users-history', 'UsersHistoryController@index')->name('usershistory.index');
+//Route::get('generate-pdf','HomeController@generatePDF');
 
 Route::get('/blog/categories/{category}', [PostsController::class, 'category'])->name('blog.category'); //pokazuva postoj po kategorija fe
 
@@ -24,6 +24,13 @@ Auth::routes();
 
 Route::middleware('auth')->group ( function (){
 	Route::get('/home', 'HomeController@index')->name('home');
+
+	//Route::get('demo-generate-pdf','UsersHistoryController@demoGeneratepdf')->name('usershistory.mypdf');
+	Route::get('usershistory.mypdf', 'UsersHistoryController@index');
+	Route::get('usershistory.pdf', 'UsersHistoryController@pdf');
+
+
+	Route::get('users-history', 'UsersHistoryController@index')->name('usershistory.index');
 
 	Route::resource('categories', 'CategoriesController');
 
