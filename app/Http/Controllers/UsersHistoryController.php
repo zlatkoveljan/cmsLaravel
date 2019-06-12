@@ -34,7 +34,7 @@ class UsersHistoryController extends Controller
     {
      $users = $this->get_user_data();
      $output = '
-     <h3 align="center">Customer Data</h3>
+     <h3 align="center">Users Data</h3>
      <table width="100%" style="border-collapse: collapse; border: 0px;">
       <tr>
     <th style="border: 1px solid; padding:12px;" width="20%">Name</th>

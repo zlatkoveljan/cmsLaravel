@@ -7,7 +7,7 @@
 		<div class="card-body">
             @if ($users->count() > 0)
             
-            <div class="col-md-5" align="right">
+            <div class="col-md-2" align="left">
                 <a href="{{ url('usershistory.pdf') }}" class="btn btn-danger">Convert into PDF</a>
             </div>
 
