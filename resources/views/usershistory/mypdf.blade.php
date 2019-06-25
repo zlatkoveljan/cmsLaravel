@@ -7,8 +7,8 @@
 		<div class="card-body">
             @if ($users->count() > 0)
             
-            <div class="col-md-2" align="left">
-                <a href="{{ url('usershistory.pdf') }}" class="btn btn-danger">Convert into PDF</a>
+            <div class="col-md-4" align="left" style="padding: 3px">
+                <a href="{{ url('usershistory.pdf') }}" class="btn btn-success">Make PDF</a>
             </div>
 
 			<table class="table">
@@ -16,8 +16,8 @@
 					<th>Image</th>
 					<th>Name</th>
 					<th>Email</th>
-					<th>Ip</th>
-					<th>Sum(logins)</th>
+					<th>Ip Address</th>
+					<th>Number of Logins</th>
 					{{-- <th></th>
 					<th></th> --}}
 				</thead>
@@ -28,7 +28,7 @@
 							<img width="40px" height="40px" style="border-radius: 50%" src="{{ Gravatar::src($user->email)}}" alt="">
 						</td>
 						<td>
-							<?php echo $user->name; ?>
+							{{$user->name}}
 						</td>
 						<td>
 							{{$user->email}}

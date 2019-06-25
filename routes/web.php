@@ -49,3 +49,9 @@ Route::middleware(['auth', 'admin'])->group(function(){
 	Route::get('users', 'UsersController@index')->name('users.index');
 	Route::post('users/{user}/make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
 });
+
+//Route::get('/subscribe', 'SubscriptionController@index');
+//Route::post('/subscribe', 'SubscriptionController@store');
+Route::post('/charge', 'CheckoutController@charge');
+
+Route::post('/subscribe_process', 'CheckoutController@subscribe_process');

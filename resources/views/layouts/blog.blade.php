@@ -10,6 +10,15 @@
       @yield('title')
     </title>
 
+    <style>
+
+      .stripe-button-el { 
+        display: none !important; 
+        }
+
+    </style>
+    
+
     <!-- Styles -->
     <link href="{{ asset('css/page.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -17,11 +26,13 @@
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{ asset('img/apple-touch-icon.png') }}">
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
+
+    
   </head>
 
   <body>
 
-
+      
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
       <div class="container">
@@ -34,6 +45,20 @@
           </a>
         </div>
 
+        
+            @if (session('success'))
+              
+                <p class="alert alert-success">
+                    {{ session()->get('success') }}
+                </p>
+            @endif
+            @if (session('error'))
+                <p class="alert alert-danger">
+                        {{ session()->get('error') }}
+                </p>
+              
+            @endif
+
         <section class="navbar-mobile">
           <span class="navbar-divider d-mobile-none"></span>
 
@@ -41,7 +66,23 @@
 
             </ul>
         </section>
-
+        <a>
+        <form action="/subscribe_process" method="POST">
+          @csrf
+          <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button" style="display: none !important"
+                  data-key= {{ env('STRIPE_KEY') }}
+                  data-amount="999"
+                  data-name="Subscribe"
+                  data-description="Monthly subscription fee"
+                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                  data-locale="auto"
+                  data-currency="usd">
+                 
+          </script>
+          <button type="submit" class="btn btn-xs btn-round btn-success">Subscribe</button>
+         </form>
+        </a>
         <a class="btn btn-xs btn-round btn-success" href="{{ route('login') }}">Login</a>
 
       </div>

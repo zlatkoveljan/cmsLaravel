@@ -5,6 +5,7 @@
 @endsection
 
 @section('header')
+
  <header class="header text-white h-fullscreen pb-80" style="background-image: url({{ asset('storage/' . $post->image) }});" data-overlay="9">
       <div class="container text-center">
 
@@ -35,13 +36,16 @@
 @section('content')
 <main class="main-content">
 
-
+    
       <!--
       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
       | Blog content
       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
       !-->
       <div class="section" id="section-content">
+
+         
+        
         <div class="container">
 
         	{!! $post->content !!}
