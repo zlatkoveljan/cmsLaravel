@@ -10,6 +10,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -31,7 +32,8 @@ class CheckoutController extends Controller
             session()->flash('success', 'Welcome to our blog, subscriber');
             return redirect()->back();   
         } catch (\Exception $ex) {
-            return view('blog.show')->with('post', $post);
+			session()->flash('error', 'Unauthorized purchase');
+            return redirect()->back();
         }
 	}
 	
@@ -41,9 +43,10 @@ class CheckoutController extends Controller
 			Stripe::setApiKey(env('STRIPE_SECRET'));
 
 			$user = User::find(1);
+			//dd($user);
 			$user->newSubscription('primary', 'plan_FJc3YcGsfqMnDB')->create($request->stripeToken, []);
-
-			session()->flash('success', 'Welcome to our blog, subscriber');
+			Auth::user($user);
+			session()->flash('success', 'Welcome to our blog '. $user->name);
             return redirect()->back();
 		} catch (\Exception $ex) {
 			return $ex->getMessage();

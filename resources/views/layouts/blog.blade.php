@@ -37,6 +37,19 @@
     <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
       <div class="container">
 
+          @if (session('success'))
+              
+              <p class="alert alert-success">
+                  {{ session()->get('success') }}
+              </p>
+          @endif
+          @if (session('error'))
+              <p class="alert alert-danger">
+                      {{ session()->get('error') }}
+              </p>
+            
+          @endif
+
         <div class="navbar-left">
           <button class="navbar-toggler" type="button">&#9776;</button>
           <a class="navbar-brand" href="{{ route('welcome') }}">
@@ -46,18 +59,7 @@
         </div>
 
         
-            @if (session('success'))
-              
-                <p class="alert alert-success">
-                    {{ session()->get('success') }}
-                </p>
-            @endif
-            @if (session('error'))
-                <p class="alert alert-danger">
-                        {{ session()->get('error') }}
-                </p>
-              
-            @endif
+           
 
         <section class="navbar-mobile">
           <span class="navbar-divider d-mobile-none"></span>
