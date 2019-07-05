@@ -11,6 +11,7 @@ use App\Category;
 use App\Tag;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class CheckoutController extends Controller
 {
@@ -43,9 +44,13 @@ class CheckoutController extends Controller
 			Stripe::setApiKey(env('STRIPE_SECRET'));
 
 			$user = User::find(1);
+			$user->newSubscription('primary', 'plan_FKY1OcutV9Lwzj')->create($request->stripeToken, []);
+            //Auth::user($user);
+            
+            $user->subscriber = 1;
+            $user->update();
+			//App('App\Http\Controllers\UsersController')->makeAdmin($user);
 			//dd($user);
-			$user->newSubscription('primary', 'plan_FJc3YcGsfqMnDB')->create($request->stripeToken, []);
-			Auth::user($user);
 			session()->flash('success', 'Welcome to our blog '. $user->name);
             return redirect()->back();
 		} catch (\Exception $ex) {

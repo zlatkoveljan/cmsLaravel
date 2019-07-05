@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
         		'role' => 'admin',
                 'password' => Hash::make('password'),
                 'ip_address' => '127.0.0.1',
+                'subscriber' => 0
         	]);
         }
     }

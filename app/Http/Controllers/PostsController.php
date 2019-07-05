@@ -56,7 +56,8 @@ class PostsController extends Controller
             'image' => $image,
             'published_at' => $request->published_at,
             'category_id' => $request->category,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'premium_post' => $request->premium_post
         ]);
 
         //dd($request->tags);

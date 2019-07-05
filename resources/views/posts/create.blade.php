@@ -72,6 +72,10 @@
 							</select>						
 					</div>
 				@endif
+				{{-- <div class="form-group">
+					<label for="premium_post">Premium Post</label>
+					<input type="text" class="form-control" name="premium_post" id="premium_post" value="{{isset($post) ? $post->premium_post : ''}}">
+				</div> --}}
 
 				<div class="form-group">
 					<button class="btn btn-success" type="submit">{{isset($post) ? 'Update Post' : 'Create Post'}}</button>

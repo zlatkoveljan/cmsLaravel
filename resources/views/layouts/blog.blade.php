@@ -37,11 +37,11 @@
     <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
       <div class="container">
 
-          @if (session('success'))
+          @if (session()->has('success'))
               
-              <p class="alert alert-success">
+              <div class="alert alert-success">
                   {{ session()->get('success') }}
-              </p>
+              </div>
           @endif
           @if (session('error'))
               <p class="alert alert-danger">
@@ -68,23 +68,27 @@
 
             </ul>
         </section>
+        @if (isset($user) && $user->subscriber == 1 || isset($user) != true) 
+         
+        @else
         <a>
-        <form action="/subscribe_process" method="POST">
-          @csrf
-          <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button" style="display: none !important"
-                  data-key= {{ env('STRIPE_KEY') }}
-                  data-amount="999"
-                  data-name="Subscribe"
-                  data-description="Monthly subscription fee"
-                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                  data-locale="auto"
-                  data-currency="usd">
-                 
-          </script>
-          <button type="submit" class="btn btn-xs btn-round btn-success">Subscribe</button>
-         </form>
-        </a>
+            <form action="/subscribe_process" method="POST">
+              @csrf
+              <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button" style="display: none !important"
+                      data-key= {{ env('STRIPE_KEY') }}
+                      data-amount="999"
+                      data-name="Subscribe"
+                      data-description="Monthly subscription fee"
+                      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                      data-locale="auto"
+                      data-currency="usd">
+                     
+              </script>
+              <button type="submit" class="btn btn-xs btn-round btn-success">Subscribe</button>
+             </form>
+            </a>                
+        @endif
         <a class="btn btn-xs btn-round btn-success" href="{{ route('login') }}">Login</a>
 
       </div>

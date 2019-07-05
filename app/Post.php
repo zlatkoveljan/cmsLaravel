@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class Post extends Model
 {
 	use SoftDeletes;
-    protected $fillable = ['title','description','content','image','published_at', 'category_id', 'user_id'];
+    protected $fillable = ['title','description','content','image',
+    'published_at', 'category_id', 'user_id', 'premium_post'];
 
     public function deleteImage()
     {

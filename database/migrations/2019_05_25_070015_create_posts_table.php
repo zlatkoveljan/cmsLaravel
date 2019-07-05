@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use phpDocumentor\Reflection\Types\Null_;
 
 class CreatePostsTable extends Migration
 {
@@ -22,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->integer('category_id');
             $table->timestamp('published_at');
+            $table->boolean('premium_post')->default(false);
             $table->timestamps();
         });
     }

@@ -29,10 +29,10 @@ Category {{ $category->name }}
         <div class="container">
           <div class="row">
 
-
+            
               <div class="col-md-8 col-xl-9">
-                  @if ( isset(Auth::user()->name) )
-  
+                  @auth
+                  
                 <div class="row gap-y">
                   @forelse ($posts as $post)
                       <div class="col-md-6">
@@ -64,7 +64,7 @@ Category {{ $category->name }}
                 <p class="text-center">
                 Please  <a href="/login">login</a> to our page so you can see its contents 
                 </p>
-                @endif
+                @endauth
               </div>
             @include('partials.sidebar')
           </div>

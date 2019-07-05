@@ -31,7 +31,7 @@ Tag {{ $tag->name }}
 
 
               <div class="col-md-8 col-xl-9">
-                  @if ( isset(Auth::user()->name) )
+                  @auth
   
                 <div class="row gap-y">
                   @forelse ($posts as $post)
@@ -64,7 +64,7 @@ Tag {{ $tag->name }}
                 <p class="text-center">
                 Please  <a href="/login">login</a> to our page so you can see its contents 
                 </p>
-                @endif
+                @endauth
               </div>
             @include('partials.sidebar')
           </div>

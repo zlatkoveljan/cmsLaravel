@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Category;
 use App\Post;
 use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,6 +27,7 @@ class PostsController extends Controller
 		{
 			$posts = $category->posts()->simplePaginate(3);
 		}
+		
 		return view('blog.category')
 		->with('category', $category)
 		->with('posts', $posts)
